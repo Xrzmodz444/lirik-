@@ -54,13 +54,29 @@
             display: block;
             margin-bottom: 5px;
         }
+
+        .start-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: #ff5757;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <button class="start-button" id="startButton">Mulai</button> <!-- Tombol untuk memulai musik dan lirik -->
+    
     <div class="lyrics-container" id="lyricsContainer">
     </div>
 
-    <audio id="backgroundMusic" src="music.mp3"></audio> <!-- Tambahkan elemen audio -->
+    <audio id="backgroundMusic" src="music.mp3"></audio> <!-- Elemen audio -->
 
     <script>
         const lyrics = [
@@ -105,11 +121,12 @@
             }
         }
 
-        // Memutar musik dan menjalankan animasi lirik
-        window.onload = function() {
-            playMusic(); // Memulai musik saat halaman dimuat
-            singSong();  // Menjalankan animasi lirik
-        };
+        // Menjalankan musik dan lirik ketika tombol ditekan
+        document.getElementById('startButton').addEventListener('click', function() {
+            playMusic();  // Memulai musik
+            singSong();   // Memulai animasi lirik
+            this.style.display = 'none';  // Sembunyikan tombol setelah ditekan
+        });
     </script>
 </body>
 </html>
