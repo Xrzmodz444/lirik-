@@ -24,10 +24,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('background.jpg');
+            background-image: url('background1.jpg');
             background-size: cover;
             background-position: center;
             z-index: -2;
+            transition: background-image 0.5s ease;
         }
 
         body::after {
@@ -68,15 +69,31 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .change-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: #57a1ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <button class="start-button" id="startButton">Mulai</button> <!-- Tombol untuk memulai musik dan lirik -->
+    <button class="change-button" id="changeButton">Ganti Background dan Musik</button> <!-- Tombol untuk mengubah background dan musik -->
     
     <div class="lyrics-container" id="lyricsContainer">
     </div>
 
-    <audio id="backgroundMusic" src="music.mp3"></audio> <!-- Elemen audio -->
+    <audio id="backgroundMusic" src="music1.mp3"></audio> <!-- Elemen audio -->
 
     <script>
         const lyrics = [
@@ -86,8 +103,12 @@
             "©IsalMods"
         ];
 
-        const delays = [0.5, 0.10,];
+        const delays = [0.5, 0.10];
         const speeds = [0.5, 0.10];
+
+        let currentIndex = 0; // Indeks awal untuk background dan musik
+        const backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg', 'background4.jpg'];
+        const musics = ['music1.mp3', 'music2.mp3', 'music3.mp3', 'music4.mp3'];
 
         // Fungsi untuk memainkan musik
         function playMusic() {
@@ -128,6 +149,18 @@
             singSong();   // Memulai animasi lirik
             this.style.display = 'none';  // Sembunyikan tombol setelah ditekan
         });
+
+        // Fungsi untuk mengubah background dan musik
+        function changeBackgroundAndMusic() {
+            currentIndex = (currentIndex + 1) % backgrounds.length; // Pergantian indeks background dan musik
+            document.body.style.setProperty('--background-image', `url('${backgrounds[currentIndex]}')`); // Mengganti background
+            const music = document.getElementById('backgroundMusic');
+            music.src = musics[currentIndex]; // Mengganti musik
+            music.play(); // Memainkan musik yang baru
+        }
+
+        // Menambahkan event listener untuk tombol pengganti background dan musik
+        document.getElementById('changeButton').addEventListener('click', changeBackgroundAndMusic);
     </script>
 </body>
 </html>
