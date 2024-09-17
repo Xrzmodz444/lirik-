@@ -99,13 +99,13 @@
 
 <script>
     let progressElement = document.querySelector('.progress');
-    let percentage = 0.4;
+    let percentage = 1;
 
     function updateProgress() {
         if (percentage <= 100) {
             progressElement.textContent = percentage + '%';
             percentage++;
-            setTimeout(updateProgress, 100); // Atur kecepatan animasi dengan mengubah nilai 100
+            setTimeout(updateProgress, 10); // Atur kecepatan animasi dengan mengubah nilai 100
         }
     }
 
