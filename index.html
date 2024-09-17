@@ -94,30 +94,10 @@
     </div>
 
     <audio id="backgroundMusic" src="music1.mp3"></audio> <!-- Elemen audio -->
-
-<div class="progress"></div>
-
-<script>
-    let progressElement = document.querySelector('.progress');
-    let percentage = 1;
-
-    function updateProgress() {
-        if (percentage <= 100) {
-            progressElement.textContent = percentage + '%';
-            percentage++;
-            setTimeout(updateProgress, 100); // Atur kecepatan animasi dengan mengubah nilai 100
-        }
-    }
-
-    updateProgress();
-</script>
     
     <script>
         const lyrics = [
-            "AMA",
-            "AND",
-            "RID",
-            "🤍"
+            "AMA 🤍 RID"
         ];
 
         const delays = [0.5, 0.10];
