@@ -97,19 +97,20 @@
 
 <div class="progress"></div>
 
+<script>
     let progressElement = document.querySelector('.progress');
-    let percentage = 1;
+    let percentage = 0.4;
 
     function updateProgress() {
         if (percentage <= 100) {
-            progressElement.textContent = percentage + '%🤍';
+            progressElement.textContent = percentage + '%';
             percentage++;
             setTimeout(updateProgress, 100); // Atur kecepatan animasi dengan mengubah nilai 100
         }
     }
 
     updateProgress();
-    
+</script>
     <script>
         const lyrics = [
             "AMA 🤍 RID"
